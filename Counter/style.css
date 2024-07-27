@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  padding: 5px;
+}
+
+input {
+  width: 50px;
+}
+.input-row {
+  font-size: large;
+  padding: 10px;
+}
+
+.btn {
+  display: flex;
+  gap: 10px;
+}
+#increment-btn,
+#decrement-btn,
+#reset-btn {
+  height: 50px;
+  width: 75px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#increment-btn:hover,
+#decrement-btn:hover,
+#reset-btn:hover {
+  background-color: rgb(147, 101, 41);
+}
+#increment-btn {
+  background-color: rgb(140, 214, 29);
+}
+
+#decrement-btn {
+  background-color: rgb(234, 12, 12);
+}
+
+#reset-btn {
+  background-color: yellow;
+}
