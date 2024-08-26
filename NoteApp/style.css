@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2c3e50;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #ecf0f1;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px #7f8c8d;
+}
+
+#addNewNoteBtn {
+  margin-bottom: 20px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #e74c3c;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#addNewNoteBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#notesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.note {
+  width: 300px;
+  background-color: #34495e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px dotted #e74c3c;
+}
+
+.note:hover {
+  transform: scale(1.02);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.headerTool {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #a08c62;
+  color: #ecf0f1;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.headerTool i {
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0 5px;
+}
+
+.headerTool .saveBtn:hover {
+  transform: scale(1.2);
+  color: greenyellow;
+}
+
+.headerTool .deleteBtn:hover {
+  transform: scale(1.2);
+  color: #e74c3c;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  min-height: 150px;
+  transition: background-color 0.2s ease;
+}
+
+textarea:focus {
+  background-color: #bdc3c7;
+}
