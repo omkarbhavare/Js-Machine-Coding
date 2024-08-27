@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e0f7fa;
+}
+
+h1 {
+  padding: 15px;
+  color: #00695c;
+  text-align: center;
+}
+
+#mainContainer {
+  border: 2px solid #00695c;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 105, 92, 0.2);
+  width: 90%;
+  max-width: 400px;
+}
+
+#labelCheckboxColumn {
+  border: 1px dotted #004d40;
+  padding: 10px 10px;
+  display: grid;
+  grid-template-areas:
+    "upperSetLabel upperSetCheckbox"
+    "lowerSetLabel lowerSetCheckbox"
+    "numbersSetLabel numbersSetCheckbox"
+    "symbolsSetLabel symbolsSetCheckbox";
+  gap: 20px;
+  background-color: #b2dfdb;
+}
+
+#labelCheckboxColumn label {
+  font-size: 16px;
+  color: #004d40;
+  text-align: left;
+}
+
+#labelCheckboxColumn input {
+  justify-self: center;
+}
+
+.generatedPasswordTextarea {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #004d40;
+  background-color: #e0f2f1;
+  color: #004d40;
+  border-radius: 2px;
+  font-size: 25px;
+}
+
+#generatePasswordBtn {
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00796b;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#generatePasswordBtn:hover {
+  background-color: #004d40;
+}
+
+/* Responsive Design for Larger Screens */
+@media (min-width: 768px) {
+  #mainContainer {
+    width: 50vw; /* 50% of the viewport width on medium screens */
+  }
+
+  #labelCheckboxColumn {
+    grid-template-areas:
+      "upperSetLabel upperSetCheckbox numbersSetLabel numbersSetCheckbox"
+      "symbolsSetLabel symbolsSetCheckbox symbolsSetLabel symbolsSetCheckbox";
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .generatedPasswordTextarea {
+    font-size: 20px;
+  }
+}
+
+/* Responsive Design for Extra Large Screens */
+@media (min-width: 1024px) {
+  #mainContainer {
+    width: 30vw; /* 30% of the viewport width on large screens */
+  }
+
+  .generatedPasswordTextarea {
+    font-size: 18px;
+  }
+}
