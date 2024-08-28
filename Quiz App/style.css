@@ -1,0 +1,109 @@
+/* Reset some default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: #004d40;
+  margin-bottom: 20px;
+}
+
+#mainContainer {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #00796b;
+}
+
+.inputLabel {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #00796b;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-size: 1em;
+  cursor: pointer;
+  /* margin: 5px; */
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-content: center;
+}
+
+button:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+.previousNextBtnContainer {
+  /* border: 1px solid black; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin: 20px 0 0 0;
+}
+
+.previousNextBtnContainer button {
+  width: max-content;
+}
+
+@media (max-width: 600px) {
+  #mainContainer {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+  }
+
+  .previousNextBtnContainer {
+    flex-direction: column;
+  }
+
+  .previousNextBtnContainer button {
+    color: goldenrod;
+    width: 100%;
+  }
+}

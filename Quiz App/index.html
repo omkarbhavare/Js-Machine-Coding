@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Quiz App</h1>
+    <div id="mainContainer">
+      <span class="finalScore"></span>
+      <span class="isQuestionAnswered">🔴</span>
+      <h2 class="questionHeading"></h2>
+      <div id="optionsContainer">
+        <div class="inputLabel">
+          <input id="option1" type="radio" name="answerName" value="0" />
+          <label for="option1" class="options"></label>
+        </div>
+        <div class="inputLabel">
+          <input id="option2" type="radio" name="answerName" value="1" />
+          <label for="option2" class="options"></label>
+        </div>
+        <div class="inputLabel">
+          <input id="option3" type="radio" name="answerName" value="2" />
+          <label for="option3" class="options"></label>
+        </div>
+        <div class="inputLabel">
+          <input id="option4" type="radio" name="answerName" value="3" />
+          <label for="option4" class="options"></label>
+        </div>
+      </div>
+      <!-- <button class="submitAnswerBtn">Submit</button> -->
+      <div class="previousNextBtnContainer">
+        <button class="previousBtn">Previous</button>
+        <button class="nextBtn">Next</button>
+      </div>
+      <button id="submitTest">Submit Test</button>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
