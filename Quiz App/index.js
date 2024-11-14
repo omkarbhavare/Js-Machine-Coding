@@ -12,21 +12,17 @@ const options = document.querySelectorAll(".options");
 const answerInput = document.querySelectorAll("input");
 const previousBtn = document.querySelector(".previousBtn");
 const nextBtn = document.querySelector(".nextBtn");
-// const submitAnswerBtn = document.querySelector(".submitAnswerBtn");
-const isQuestionAnswered = document.querySelector(".isQuestionAnswered");
 const submitTest = document.getElementById("submitTest");
 
 function loadQuestion() {
   const data = questions[questionNumber];
   updateNavigationButtons();
   displayQuestionAndOptions(data);
-  highlightAnsweredQuestion(data);
 }
 
 function updateNavigationButtons() {
   previousBtn.style.visibility = questionNumber === 0 ? "hidden" : "visible";
-  nextBtn.style.visibility =
-    questionNumber === questions.length - 1 ? "hidden" : "visible";
+  nextBtn.style.visibility = questionNumber === questions.length - 1 ? "hidden" : "visible";
 }
 
 function displayQuestionAndOptions(data) {
@@ -37,29 +33,18 @@ function displayQuestionAndOptions(data) {
   });
 }
 
-function highlightAnsweredQuestion(data) {
-  isQuestionAnswered.textContent = data.answered ? "🟢" : "🔴";
-}
-
 function handleAnswerSubmission() {
   const data = questions[questionNumber];
-  // if (data.answered) {
-  //   alert(
-  //     `You have already answered this question. Your previous answer was: ${
-  //       data.options[data.selectedAnswer]
-  //     }`
-  //   );
-  //   return;
-  // }
-
   answerInput.forEach((input, index) => {
-    if (input.checked) {
+    if (input.checked && !data.answered) {
       data.answered = true;
       data.selectedAnswer = index;
       if (index === data.correct) {
         correctAnswers++;
       } else {
-        wrongAnswers -= 0.25;
+        console.log("correctAnswers",correctAnswers,"wrongAnswers",wrongAnswers)
+        wrongAnswers = wrongAnswers - 0.25;
+        console.log("correctAnswers",correctAnswers,"wrongAnswers",wrongAnswers)
       }
       moveToNextQuestion();
     }
@@ -67,8 +52,8 @@ function handleAnswerSubmission() {
 }
 
 function moveToNextQuestion() {
-  // questionNumber++;
-  if (questionNumber < questions.length) {
+  if (questionNumber < questions.length - 1) {
+    questionNumber++;
     loadQuestion();
   } else {
     displayFinalScore();
@@ -76,31 +61,16 @@ function moveToNextQuestion() {
 }
 
 function displayFinalScore() {
-  mainContainer.innerHTML = `<h2>Your Final Score is: ${
-    correctAnswers + wrongAnswers
-  }</h2>`;
+  mainContainer.innerHTML = `<h2>Your Final Score is: ${correctAnswers + wrongAnswers}</h2>`;
 }
 
 loadQuestion();
 
-nextBtn.addEventListener("click", () => {
-  handleAnswerSubmission();
-  if (questionNumber < questions.length - 1) {
-    questionNumber++;
-
-    loadQuestion();
-  }
-});
-
+nextBtn.addEventListener("click", handleAnswerSubmission);
 previousBtn.addEventListener("click", () => {
-  handleAnswerSubmission();
   if (questionNumber > 0) {
     questionNumber--;
-
     loadQuestion();
   }
 });
-
-// submitAnswerBtn.addEventListener("click", handleAnswerSubmission);
-
 submitTest.addEventListener("click", displayFinalScore);
