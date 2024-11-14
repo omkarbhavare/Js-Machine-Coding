@@ -2,30 +2,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const stars = document.querySelectorAll(".star");
   const ratingOutput = document.querySelector(".rating");
 
+  function updateStars(rating) {
+    stars.forEach((star, index) => {
+      star.classList.toggle("selected", index < rating);
+    });
+    ratingOutput.textContent = `Rating: ${rating}`;
+  }
+
   stars.forEach((star) => {
+    // Click event: Set the rating
     star.addEventListener("click", () => {
-      const rating = star.getAttribute("data-value");
-      ratingOutput.textContent = `Rating: ${rating}`;
-
-      stars.forEach((star) => star.classList.remove("selected"));
-
-      for (let i = 0; i < rating; i++) {
-        stars[i].classList.add("selected");
-      }
+      const rating = Number(star.getAttribute("data-value"));
+      updateStars(rating);
     });
 
+    // Mouseover event: Highlight stars temporarily
     star.addEventListener("mouseover", () => {
-      const rating = star.getAttribute("data-value");
-
-      stars.forEach((star) => star.classList.remove("hover"));
-
-      for (let i = 0; i < rating; i++) {
-        stars[i].classList.add("hover");
-      }
+      const rating = Number(star.getAttribute("data-value"));
+      updateStars(rating);
     });
 
+    // Mouseout event: Reset hover effect
     star.addEventListener("mouseout", () => {
-      stars.forEach((star) => star.classList.remove("hover"));
+      const selectedRating = document.querySelectorAll(".star.selected").length;
+      updateStars(selectedRating);
     });
   });
 });
