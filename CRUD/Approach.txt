@@ -1,0 +1,92 @@
+✅ 1. Adding a Task – Create Workflow
+🔄 Flow:
+User types in the input box (todoInput) and clicks the "Add" button.
+
+click event triggers the todoSubmitBtn.addEventListener(...).
+
+Inside that:
+
+event.preventDefault() stops the form from refreshing the page.
+
+We check if it's edit mode or not (currentEditId is null).
+
+Since it’s not in edit mode:
+
+The input text is trimmed and passed to the addTask(text) function.
+
+In addTask():
+
+A new task object is created with:
+
+id: generated from generateID()
+
+text: your input text
+
+isEdit: true
+
+isDelete: false
+
+It's added to the taskList using push().
+
+Input field is cleared.
+
+render() is called to show updated list in UI.
+
+✏️ 2. Updating a Task – Update Workflow
+🔄 Flow:
+➤ Phase 1 – Start Editing:
+User clicks the ✏️ button beside a task.
+
+That triggers the editBtn.addEventListener(...) inside the render() loop.
+
+editTask(task.id) is called.
+
+Inside editTask():
+
+The task is found from taskList using .filter() (you can also use .find()).
+
+Its text is set to the input box (todoInput.value = task.text).
+
+Input box gets focused for editing.
+
+currentEditId is set to that task’s id to remember which one to update.
+
+Button label is changed from "Add" to "Save".
+
+➤ Phase 2 – Save the Edit:
+User modifies the text and clicks the "Save" button.
+
+Again, todoSubmitBtn.addEventListener(...) is triggered.
+
+Inside it:
+
+It checks if currentEditId exists → it’s edit mode.
+
+If yes:
+
+It uses .find() to get the task by currentEditId.
+
+Updates that task’s text with new value.
+
+Sets currentEditId = null (exit edit mode).
+
+Resets button text to "Add".
+
+Calls render() to refresh UI with updated task.
+
+❌ 3. Deleting a Task – Delete Workflow
+🔄 Flow:
+User clicks the ❌ button beside a task.
+
+This triggers deleteBtn.addEventListener(...) inside render().
+
+Calls removeTask(task.id).
+
+Inside removeTask():
+
+Finds the task index using .findIndex().
+
+Removes the task from taskList using .splice(index, 1).
+
+Calls render() to refresh the UI.
+
