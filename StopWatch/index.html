@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Stopwatch</h1>
+
+    <!-- Stopwatch Time Display (Live region for screen readers) -->
+    <h3 id="timeDisplay" role="timer" aria-live="polite" aria-atomic="true">
+      00 H: 00 M: 00 S
+    </h3>
+
+    <!-- Main Control Buttons -->
+    <div id="stopWatchControlBtn" role="group" aria-label="Stopwatch Controls">
+      <button type="button" id="startBtn">Start</button>
+      <button type="button" id="pauseBtn">Pause</button>
+      <button type="button" id="resetBtn">Reset</button>
+    </div>
+
+    <!-- Lap Buttons -->
+    <div id="lapControlBtn" role="group" aria-label="Lap Controls">
+      <button type="button" id="lapBtn">Lap</button>
+      <button type="button" id="clearAllBtn">Clear All</button>
+    </div>
+
+    <!-- Lap Display Area -->
+    <div id="lapDisplay" role="list" aria-label="Lap times"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
