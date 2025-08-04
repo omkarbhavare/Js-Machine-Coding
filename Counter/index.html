@@ -3,21 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Counter</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Counter App</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Counter</h1>
-    <h1 id="output">20</h1>
-    <span class="input-row"
-      >Increment / Decrement By
-      <input id="input-value" type="number" value="1" min="1" max="10" />
-    </span>
-    <div class="btn">
-      <button type="button" id="increment-btn">+</button>
-      <button type="button" id="decrement-btn">-</button>
-      <button type="reset" id="reset-btn">Reset</button>
-    </div>
-    <script src="index.js"></script>
+    <!-- Main section for the Counter App -->
+    <main id="counterApp" aria-label="Counter Application">
+      <!-- Display area for the counter result -->
+      <div id="counterDisplay" aria-live="polite">
+        Counter Value: <span id="counterValue">0</span>
+      </div>
+
+      <!-- Input to optionally set a custom counter value -->
+      <div class="inputGroup">
+        <label for="customInput" class="visually-hidden">Enter Number</label>
+        <input
+          type="number"
+          id="customInput"
+          placeholder="Enter Number"
+          value="1"
+          aria-label="Set custom counter value"
+          required
+          max="10"
+          min="0"
+        />
+      </div>
+
+      <!-- Buttons to control the counter -->
+      <div id="controls">
+        <button id="incrementBtn" aria-label="Increment counter">+</button>
+        <button id="decrementBtn" aria-label="Decrement counter">-</button>
+        <button id="resetBtn" aria-label="Reset counter to initial value">
+          Reset
+        </button>
+      </div>
+    </main>
+
+    <!-- Link to external JS file -->
+    <script src="./index.js"></script>
   </body>
 </html>

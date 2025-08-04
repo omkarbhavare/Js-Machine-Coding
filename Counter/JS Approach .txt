@@ -1,0 +1,104 @@
+✅ Step-by-Step JS Code Approach
+🔹 Step 1: Wait for DOM to Load
+
+document.addEventListener("DOMContentLoaded", () => {
+Always wrap JS inside this event to ensure all HTML elements are available before manipulation begins.
+
+🔹 Step 2: Select Required DOM Elements
+
+const incrementBtn = document.querySelector("#incrementBtn");
+const decrementBtn = document.querySelector("#decrementBtn");
+const resetBtn = document.querySelector("#resetBtn");
+const customInput = document.querySelector("#customInput");
+const counterValue = document.querySelector("#counterValue");
+Use querySelector to access buttons and display/input fields.
+
+🔹 Step 3: Declare Initial State
+
+let finalResult = 0;
+let customInputValue = parseInt(customInput.value);
+const MAX = 50;
+const MIN = 0;
+Define global state:
+
+finalResult: current counter.
+
+customInputValue: step to increment/decrement.
+
+Constants MAX and MIN used to define boundaries.
+
+🔹 Step 4: Update Button States (Enable/Disable)
+
+function postIncreCalculationCounterValue() {
+  incrementBtn.disabled = finalResult + customInputValue > MAX;
+}
+
+function postDecreCalculationCounterValue() {
+  decrementBtn.disabled = finalResult - customInputValue < MIN;
+}
+This ensures that buttons are disabled if pressing them would violate MIN or MAX bounds.
+
+🔹 Step 5: Handle Custom Input Change
+
+customInput.addEventListener("change", () => {
+  customInputValue = parseInt(customInput.value);
+  if (isNaN(customInputValue) || customInputValue <= MIN || customInputValue > MAX) {
+    customInputValue = 1;
+    customInput.value = 1;
+  }
+  postIncreCalculationCounterValue();
+  postDecreCalculationCounterValue();
+});
+Validate the input:
+
+Prevent non-numeric or invalid numbers.
+
+Reset to default (1) if out of bounds.
+
+🔹 Step 6: Display Counter Value
+
+function showDisplay() {
+  counterValue.innerHTML = finalResult;
+}
+Keep UI updated with the latest value.
+
+🔹 Step 7: Handle Increment/Decrement/Reset Events
+Increment Logic
+
+
+incrementBtn.addEventListener("click", () => {
+  if (finalResult + customInputValue <= MAX) {
+    finalResult += customInputValue;
+    showDisplay();
+  }
+  postIncreCalculationCounterValue();
+  postDecreCalculationCounterValue();
+});
+Decrement Logic
+
+
+decrementBtn.addEventListener("click", () => {
+  if (finalResult - customInputValue >= MIN) {
+    finalResult -= customInputValue;
+    showDisplay();
+  }
+  postDecreCalculationCounterValue();
+  postIncreCalculationCounterValue();
+});
+Reset Logic
+
+
+resetBtn.addEventListener("click", () => {
+  finalResult = 0;
+  customInputValue = parseInt(customInput.value);
+  showDisplay();
+  postIncreCalculationCounterValue();
+  postDecreCalculationCounterValue();
+});
+Each button click:
+
+Updates finalResult based on bounds.
+
+Refreshes the UI.
+
+Adjusts the enabled/disabled state of the buttons.

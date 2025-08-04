@@ -1,28 +1,79 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const inputValue = document.getElementById("input-value");
-  const output = document.getElementById("output");
-  const incrementBtn = document.getElementById("increment-btn");
-  const decrementBtn = document.getElementById("decrement-btn");
-  const resetBtn = document.getElementById("reset-btn");
-  let number = parseInt(inputValue.value);
-  let finaloutput = 0;
+  // ======= DOM References =======
+  const incrementBtn = document.getElementById("incrementBtn");
+  const decrementBtn = document.getElementById("decrementBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const customInput = document.getElementById("customInput");
+  const counterValue = document.getElementById("counterValue");
 
-  inputValue.addEventListener("change", () => {
-    number = parseInt(inputValue.value);
+  // ======= Constants =======
+  const MAX_LIMIT = 50;
+  const MIN_LIMIT = 0;
+
+  // ======= State =======
+  let counter = 0;
+  let step = parseInt(customInput.value) || 1;
+
+  // ======= Utilities =======
+
+  // Clamp input to valid range and update step
+  function validateAndSetStep() {
+    let value = parseInt(customInput.value);
+    if (isNaN(value) || value <= 0 || value > MAX_LIMIT) {
+      step = 1;
+      customInput.value = 1;
+    } else {
+      step = value;
+    }
+  }
+
+  // Update counter display
+  function updateDisplay() {
+    counterValue.textContent = counter;
+  }
+
+  // Enable/Disable buttons based on current counter
+  function toggleButtonStates() {
+    incrementBtn.disabled = counter + step > MAX_LIMIT;
+    decrementBtn.disabled = counter - step < MIN_LIMIT;
+  }
+
+  // ======= Event Listeners =======
+
+  // On input change
+  customInput.addEventListener("change", () => {
+    validateAndSetStep();
+    toggleButtonStates();
   });
 
+  // Increment handler
   incrementBtn.addEventListener("click", () => {
-    finaloutput = finaloutput + number;
-    output.innerText = finaloutput;
+    if (counter + step <= MAX_LIMIT) {
+      counter += step;
+      updateDisplay();
+      toggleButtonStates();
+    }
   });
 
+  // Decrement handler
   decrementBtn.addEventListener("click", () => {
-    finaloutput = finaloutput - number;
-    output.innerText = finaloutput;
+    if (counter - step >= MIN_LIMIT) {
+      counter -= step;
+      updateDisplay();
+      toggleButtonStates();
+    }
   });
 
+  // Reset handler
   resetBtn.addEventListener("click", () => {
-    finaloutput = 0;
-    output.innerText = finaloutput;
+    counter = 0;
+    validateAndSetStep();
+    updateDisplay();
+    toggleButtonStates();
   });
+
+  // ======= Initial Setup =======
+  validateAndSetStep();
+  updateDisplay();
+  toggleButtonStates();
 });
