@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="openFormBtn">Open Form</button>
+
+    <div class="overlay" id="overlay">
+      <div class="modal" id="modal">
+        <button class="close" id="closeBtn" aria-label="Close">❌</button>
+        <h2>Register</h2>
+
+        <form id="regForm">
+          <div class="formControl">
+            <input type="text" id="fullName" placeholder="Full Name" />
+            <small>Error message</small>
+          </div>
+
+          <div class="formControl">
+            <input type="email" id="email" placeholder="Email" />
+            <small>Error message</small>
+          </div>
+
+          <div class="formControl">
+            <input type="password" id="password" placeholder="Password" />
+            <small>Error message</small>
+          </div>
+
+          <div class="formControl">
+            <input
+              type="password"
+              id="confirmPwd"
+              placeholder="Confirm Password"
+            />
+            <small>Error message</small>
+          </div>
+
+          <button type="submit" id="submitBtn">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

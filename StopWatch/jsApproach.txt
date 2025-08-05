@@ -1,0 +1,143 @@
+Here’s a **Quick JavaScript Revision Guide** for rebuilding the ⏱️ **Stopwatch App** from scratch using your code structure:
+# ⚡ JavaScript Quick Revision: Stopwatch App
+
+## ✅ 1. **Initial Setup**
+
+### 🔹 Select all DOM elements:
+
+```js
+const timeDisplay = document.getElementById("timeDisplay");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
+const lapBtn = document.getElementById("lapBtn");
+const clearAllBtn = document.getElementById("clearAllBtn");
+const lapDisplay = document.getElementById("lapDisplay");
+```
+
+---
+
+## ✅ 2. **Variables for Timer**
+
+```js
+let isRunning = false;
+let intervalId = null;
+let totalSeconds = 0;
+```
+
+---
+
+## ✅ 3. **Utility Functions**
+
+### 🔹 Format time as `HH:MM:SS`
+
+```js
+function formatTime(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  return `${pad(hours)} H : ${pad(minutes)} M: ${pad(seconds)} S`;
+}
+```
+
+### 🔹 Pad single-digit numbers with zero
+
+```js
+function pad(num) {
+  return num.toString().padStart(2, "0");
+}
+```
+
+### 🔹 Update display
+
+```js
+function updateDisplay() {
+  timeDisplay.textContent = formatTime(totalSeconds);
+}
+```
+
+---
+
+## ✅ 4. **Core Functionalities**
+
+### ▶️ Start Timer
+
+```js
+function startTimer() {
+  if (!isRunning) {
+    isRunning = true;
+    intervalId = setInterval(() => {
+      totalSeconds++;
+      updateDisplay();
+    }, 1000);
+  }
+}
+```
+
+### ⏸️ Pause Timer
+
+```js
+function pauseTimer() {
+  clearInterval(intervalId);
+  isRunning = false;
+}
+```
+
+### 🔁 Reset Timer
+
+```js
+function resetTimer() {
+  pauseTimer();
+  totalSeconds = 0;
+  updateDisplay();
+}
+```
+
+### 🏁 Add Lap
+
+```js
+function addLap() {
+  if (isRunning) {
+    const lapItem = document.createElement("div");
+    lapItem.innerText = formatTime(totalSeconds);
+    lapItem.className = "lapItem";
+    lapItem.setAttribute("role", "list-item");
+    lapDisplay.appendChild(lapItem);
+  }
+}
+```
+
+### 🧹 Clear All Laps
+
+```js
+function clearLaps() {
+  lapDisplay.innerHTML = "";
+}
+```
+
+---
+
+## ✅ 5. **Event Listeners**
+
+```js
+startBtn.addEventListener("click", startTimer);
+pauseBtn.addEventListener("click", pauseTimer);
+resetBtn.addEventListener("click", resetTimer);
+lapBtn.addEventListener("click", addLap);
+clearAllBtn.addEventListener("click", clearLaps);
+```
+
+---
+
+## 🔁 Summary of Steps:
+
+| Step | Description                                                   |
+| ---- | ------------------------------------------------------------- |
+| 1️⃣  | Setup initial HTML structure and buttons                      |
+| 2️⃣  | Add time formatting + padding logic                           |
+| 3️⃣  | Implement `start`, `pause`, `reset`, `lap`, and `clear` logic |
+| 4️⃣  | Link all functions to button click events                     |
+| 5️⃣  | Display formatted time and lap times in UI                    |
+
+---
+

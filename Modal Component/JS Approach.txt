@@ -1,0 +1,124 @@
+⚡ JavaScript Quick Revision: Modal Registration Form
+
+
+## ✅ 1. **Modal Handling**
+
+### 🔹 Open Modal
+
+```js
+document.getElementById("openFormBtn").addEventListener("click", () => {
+  document.getElementById("overlay").style.display = "flex";
+});
+```
+
+### 🔹 Close Modal (❌ button or outside click)
+
+```js
+document.getElementById("closeBtn").addEventListener("click", closeModal);
+document.getElementById("overlay").addEventListener("click", (e) => {
+  if (e.target.id === "overlay") closeModal();
+});
+
+function closeModal() {
+  document.getElementById("overlay").style.display = "none";
+}
+```
+
+---
+
+## ✅ 2. **Form Field Validation on Blur**
+
+> Each input has a regex-based check triggered on `blur`
+
+### 🔹 Regex Patterns
+
+```js
+const patterns = {
+  fullName: /^[A-Za-z ]{3,}$/,
+  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
+};
+```
+
+### 🔹 Blur Event Listeners
+
+```js
+fullName.addEventListener("blur", () => {
+  validate(fullName, patterns.fullName, "Full Name must be 3+ letters only");
+});
+
+email.addEventListener("blur", () => {
+  validate(email, patterns.email, "Enter a valid email.");
+});
+
+password.addEventListener("blur", () => {
+  validate(password, patterns.password, "Min 6 chars, 1 letter & 1 number.");
+});
+
+confirmPwd.addEventListener("blur", () => {
+  if (confirmPwd.value === password.value && confirmPwd.value !== "")
+    showSuccess(confirmPwd);
+  else
+    showError(confirmPwd, "Passwords do not match.");
+});
+```
+
+---
+
+## ✅ 3. **Validation Helper Functions**
+
+```js
+function showSuccess(input) {
+  const control = input.parentElement;
+  control.className = "formControl success";
+  control.querySelector("small").innerText = "";
+}
+
+function showError(input, message) {
+  const control = input.parentElement;
+  control.className = "formControl error";
+  control.querySelector("small").innerText = message;
+}
+
+function validate(input, pattern, message) {
+  pattern.test(input.value.trim()) ? showSuccess(input) : showError(input, message);
+}
+```
+
+---
+
+## ✅ 4. **Form Submission Handling**
+
+### 🔹 Prevent default + validate all fields
+
+```js
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const allValid = [...form.querySelectorAll(".formControl")].every((c) =>
+    c.classList.contains("success")
+  );
+
+  if (allValid) {
+    alert("Registration Successful!");
+    form.reset(); // Clear inputs
+    [...form.querySelectorAll(".formControl")].forEach(
+      (c) => (c.className = "formControl")
+    );
+    closeModal(); // Close the modal
+  }
+});
+```
+
+---
+
+## 🔁 Summary of Steps:
+
+| Step | Action                                              |
+| ---- | --------------------------------------------------- |
+| 1️⃣  | Setup open & close modal logic                      |
+| 2️⃣  | Add blur validation for each field                  |
+| 3️⃣  | Create `showSuccess()` and `showError()` helpers    |
+| 4️⃣  | Use regex to validate input formats                 |
+| 5️⃣  | On submit, check if all inputs are marked `success` |
+| 6️⃣  | Show success alert, reset form, close modal         |
+
