@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #e6f2f2; /* light teal background */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#starContainer {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: 0 6px 12px rgba(0, 128, 128, 0.2); /* soft teal shadow */
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.star {
+  font-size: 40px;
+  color: #a0bcbc; /* dull teal when not selected */
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.star:hover {
+  transform: scale(1.2);
+  color: #009688; /* teal on hover */
+}
+
+.selected {
+  color: #009688; /* selected star color - teal */
+}
+
+.rating {
+  font-size: 20px;
+  color: #004d4d; /* dark teal text */
+  font-weight: 600;
+}
