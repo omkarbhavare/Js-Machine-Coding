@@ -3,44 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Counter App</title>
-    <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="./style.css" />
+    <title>Counter Widget</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Main section for the Counter App -->
-    <main id="counterApp" aria-label="Counter Application">
-      <!-- Display area for the counter result -->
-      <div id="counterDisplay" aria-live="polite">
-        Counter Value: <span id="counterValue">0</span>
-      </div>
+    <div id="main-container">
+      <h1>Counter Widget</h1>
 
-      <!-- Input to optionally set a custom counter value -->
-      <div class="inputGroup">
-        <label for="customInput" class="visually-hidden">Enter Number</label>
-        <input
-          type="number"
-          id="customInput"
-          placeholder="Enter Number"
-          value="1"
-          aria-label="Set custom counter value"
-          required
-          max="10"
-          min="0"
-        />
-      </div>
+      <h3 class="display">Display Number : 0</h3>
+      <label for="numberInput">Enter Number :</label>
+      <input
+        id="numberInput"
+        name="numberInput"
+        type="number"
+        min="0"
+        max="10"
+        value="1"
+      />
 
-      <!-- Buttons to control the counter -->
-      <div id="controls">
-        <button id="incrementBtn" aria-label="Increment counter">+</button>
-        <button id="decrementBtn" aria-label="Decrement counter">-</button>
-        <button id="resetBtn" aria-label="Reset counter to initial value">
-          Reset
-        </button>
+      <div id="buttons">
+        <button class="increment" type="button">+</button>
+        <button class="decrement" type="button">-</button>
+        <button class="reset" type="button">Reset</button>
       </div>
-    </main>
+    </div>
 
-    <!-- Link to external JS file -->
-    <script src="./index.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
